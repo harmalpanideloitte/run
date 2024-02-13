@@ -25,4 +25,6 @@ jobs:
  
       - name: Push changes to AEM Main Repo
         run: |
+          git config --global user.email "harmalpani@deloitte.com"
+          git config --global user.name "harmalpanideloitte"
           git push https://github.com/harmalpanideloitte/run.git main
