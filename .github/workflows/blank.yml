@@ -1,0 +1,26 @@
+name: Subtree to AEM Main Repo
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      REPO:
+        description: "Specify Tenant"
+        required: true
+jobs:
+  subtree_to_aem_main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          repository: Swa-DevOps/CM-AEM-MAIN
+          ref: refs/heads/main
+ 
+      - name: Subtree
+        run: |
+          git checkout main
+          git subtree add --prefix=tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
+ 
+      - name: Push changes to AEM Main Repo
+        run: |
+          git push -u origin main
