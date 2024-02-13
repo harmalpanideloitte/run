@@ -20,10 +20,9 @@ jobs:
       - name: Subtree
         run: |
           git checkout main
+          git pull
           git config --global user.email "harmalpani@deloitte.com"
           git config --global user.name "harmalpanideloitte"
-          git fetch tonomus
-          git pull -u tonomus
           git subtree pull --prefix=tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
  
       - name: Push changes to AEM Main Repo
