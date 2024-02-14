@@ -1,13 +1,8 @@
-name: Pull Tenant Repo Changes
+name: Harshit
 
 on:
   workflow_dispatch:
   # Trigger the workflow on push events to the tenant repo
-  push:
-    branches:
-      - main  # Adjust if needed
-    paths:
-      - 'tonomus/**'  # Only trigger for changes in the tenant directory
 
 jobs:
   pull-changes:
