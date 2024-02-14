@@ -1,21 +1,35 @@
-name: Harshit
 
+Ne@m##96541
+
+harshit.malpani@neom.com
+
+
+name: Subtree to AEM Main Repo
+ 
 on:
   workflow_dispatch:
-  # Trigger the workflow on push events to the tenant repo
-
+    inputs:
+      REPO:
+        description: "Specify Tenant"
+        required: true
 jobs:
-  pull-changes:
+  subtree_to_aem_main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
-          repository: harmalpanideloitte/run  # Replace with actual values
-          token: "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"
-          path: main
-      - name: Pull tenant changes
-        run: git -C main-repo subtree pull --prefix tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
-      - name: Commit and push changes
+          repository: harmalpanideloitte/run
+          ref: refs/heads/main
+ 
+      - name: Subtree
         run: |
-          git -C main-repo commit -am "Pulled tenant repo changes"
-          git -C main-repo push
+          git checkout main
+          git config --global user.email "harmalpani@deloitte.com"
+          git config --global user.name "harmalpanideloitte"
+          git subtree add --prefix=tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
+          git subtree pull --prefix=tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
+ 
+      - name: Push changes to AEM Main Repo
+        run: |
+          git push https://github.com/harmalpanideloitte/run.git main
