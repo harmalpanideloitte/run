@@ -12,7 +12,7 @@ jobs:
       - uses: karlludwigweise/git-subtree@v1
         with:
           pat: ${{ secrets.PAT }}
-          repo: https://github.com/harmalpanideloitte/run.git
+          repo: https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git
           action: pull
           prefix: tonomus
           message: Custom Commit Message
