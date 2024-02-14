@@ -17,7 +17,7 @@ jobs:
           git config --global user.email "harmalpani@deloitte.com"
           git config --global user.name "harmalpanideloitte"
           # git subtree add --prefix=tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
-          git rebase tonomus
+          git rebase e6347be47e669e1e3d8675a23122fc5437ec5665
           git subtree pull --prefix=tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
  
       - name: Push changes to AEM Main Repo
