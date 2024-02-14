@@ -1,17 +1,7 @@
-
-Ne@m##96541
-
-harshit.malpani@neom.com
-
-
-name: Subtree to AEM Main Repo
+name: Harshit
  
 on:
   workflow_dispatch:
-    inputs:
-      REPO:
-        description: "Specify Tenant"
-        required: true
 jobs:
   subtree_to_aem_main:
     runs-on: ubuntu-latest
