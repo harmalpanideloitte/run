@@ -1,0 +1,26 @@
+name: Pull Tenant Repo Changes
+
+on:
+  workflow_dispatch:
+  # Trigger the workflow on push events to the tenant repo
+  push:
+    branches:
+      - main  # Adjust if needed
+    paths:
+      - 'tonomus/**'  # Only trigger for changes in the tenant directory
+
+jobs:
+  pull-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: harmalpanideloitte/run  # Replace with actual values
+          token: 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
+          path: main
+      - name: Pull tenant changes
+        run: git -C main-repo subtree pull --prefix tonomus https://github.com/harmalpanideloitte/CM-AEM-TONOMUS.git main
+      - name: Commit and push changes
+        run: |
+          git -C main-repo commit -am "Pulled tenant repo changes"
+          git -C main-repo push
